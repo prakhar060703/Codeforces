@@ -18,11 +18,10 @@ first largest divisor  b=x/p1=p2*p3*p4.........
 second largest divisor a=x/p2=p1*p3*p4...........
 lcm(a,b)=p1*p2*p3*p4......... =x
 
-case2:-prime factor can be repeated
+case2:-prime factor can be repeated and b%a=0 (This condition observe from testcase)
 x=p1*p1*....p2*p2.....p3*p3..........  (p1<p2<p3....) prime factor are arranged in ascending order
 first largest divisor  b=x/p1
 second largest divisor a=x/p1*p1
-clearly you can see this that this case arises when b%a==0
 from above two equation x=b^2/a
 
 //Solution in C++

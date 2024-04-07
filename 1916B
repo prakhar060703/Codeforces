@@ -1,0 +1,66 @@
+Problem Link:- https://codeforces.com/contest/1916/problem/B
+
+First we have to understand the difference between factor and divisor
+divisor is combination of factor
+x=p1*p2*p3.......     (p1<p2<p3....) prime factor are arranged in descending order
+here p1,p2,p3 are factor of x
+(p1*p2)is one of the divisor of x
+suppose here you want to find largest divisor of x then it must be p2*p3*....... = x/p1
+
+
+let suppose that number be x
+so any number can be expressed in their prime factor
+case1:- all prime factor are unique
+x=p1*p2*p3*p4.......  (p1<p2<p3....) prime factor are arranged in ascending order
+first largest divisor  b=x/p1=p2*p3*p4.........
+second largest divisor a=x/p2=p1*p3*p4...........
+lcm(a,b)=p1*p2*p3*p4......... =x
+
+case2:-prime factor can be repeated
+x=p1*p1*....p2*p2.....p3*p3..........  (p1<p2<p3....) prime factor are arranged in ascending order
+first largest divisor  b=x/p1
+second largest divisor a=x/p1*p1
+clearly you can see this that this case arises when b%a==0
+from above two equation x=b^2/a
+
+//Solution in C++
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
+
+const int maximum=INT_MAX;
+const int minimum=INT_MIN;
+typedef long long ll;
+typedef unsigned long long int ull;
+const int MOD=1e9+7;
+
+long long GCD(long long x, long long y)
+{
+    if (y == 0) return x;
+    return GCD(y, x%y);
+}
+
+
+void solve(){
+  ll a,b;
+  cin>>a>>b;
+  if(b%a){
+      ll ans=(a*b)/GCD(a,b);
+      cout<<ans<<"\n";
+  }
+  else cout<<(b*b)/a<<"\n";
+        return;
+}
+
+int main() {
+    fastio;
+    ll t;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+	return 0;
+ }

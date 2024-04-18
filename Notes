@@ -1,0 +1,6 @@
+If we want to sort vector of pair in whatever manner you want then adjust accordingly in below function
+
+bool comp(pair<int,int>&a,pair<int,int>&b){
+    if(a.first!=b.first)return a.first>b.first;
+    else return a.second>b.second;
+}

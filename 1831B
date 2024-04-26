@@ -1,0 +1,71 @@
+
+Problem Link :- https://codeforces.com/contest/1831/problem/B
+
+Just declare array correctly...while declaring array size..try to not give array size in number... 
+if its mandatory then give size in number only   
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fastio                        \
+    ios_base::sync_with_stdio(false);  \
+    cin.tie(NULL)
+
+const int maximum=INT_MAX;
+const int minimum=INT_MIN;
+typedef long long ll;
+typedef unsigned long long int ull;
+const int MOD=1e9+7;
+
+
+
+
+void solve(){
+  
+    int n;
+    cin>>n;
+    int numa[n],numb[n];
+    for(int i=0;i<n;i++)cin>>numa[i];
+    for(int i=0;i<n;i++)cin>>numb[i];
+    
+    int resa[n+n+1]={0},resb[n+n+1]={0};
+    int i=0;int j;int count=0;
+    
+    while(i<n){
+        j=i;
+       while(j<n&&numa[i]==numa[j]){count++;j++;}
+       resa[numa[i]]=max(count,resa[numa[i]]);
+      
+       i=j;
+       count=0;
+    }
+    
+     i=0;j=0;count=0;
+    while(i<n){
+        j=i;
+        
+       while(j<n&&numb[i]==numb[j]){count++;j++;}
+       resb[numb[i]]=max(count,resb[numb[i]]);
+       i=j;
+       count=0;
+    }
+    // cout<<resa[1]<<" "<<resb[1]<<"\n";
+    int ans=1;
+    for(int i=0;i<n+n+1;i++){
+        int b=resa[i]+resb[i];
+        ans=max(ans,b);
+    }
+    cout<<ans<<"\n";
+        return;
+}
+
+int main() {
+    fastio;
+    ll t;
+    cin>>t;
+    while(t--){
+         solve();
+    }
+	return 0;
+ }

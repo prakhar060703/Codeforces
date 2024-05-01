@@ -1,0 +1,58 @@
+Problem link:- https://codeforces.com/contest/1802/problem/B
+
+just think of why to maintain counter of unknown and known pig...you will understand .....jab pig known ho gye to unko basket me rakh denge baaki basket khali...
+unknown pig ko basket me rakhte jayenge and count krte jayenge aur uske saath peeche kitne basket use kiye hr ek ith position ke liye calculate krte jayenge
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fastio                        \
+    ios_base::sync_with_stdio(false);  \
+    cin.tie(NULL)
+
+const int maximum=INT_MAX;
+const int minimum=INT_MIN;
+typedef long long ll;
+typedef unsigned long long int ull;
+const int MOD=1e9+7;
+
+
+
+
+void solve(){
+  
+    int n;
+    cin>>n;
+    int num[n];
+    for(int i=0;i<n;i++)cin>>num[i];
+    int kpig=0,upig=0;
+    int ans=0;
+    for(int i=0;i<n;i++){
+        if(num[i]==2){
+            kpig+=upig;
+            upig=0;
+            if(kpig!=0){
+                ans=max(ans,kpig/2+1);
+            }
+        }
+        else{
+            upig++;
+            if(kpig!=0)
+            ans=max(ans,upig+ kpig/2+1);
+            else ans=max(ans,upig);
+        }
+    }
+      cout<<ans<<"\n";
+        return;
+}
+
+int main() {
+    fastio;
+    ll t;
+    cin>>t;
+    while(t--){
+         solve();
+    }
+	return 0;
+ }
+

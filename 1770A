@@ -1,0 +1,54 @@
+Problem Link :- https://codeforces.com/contest/1770/problem/A
+Note that in problem statement you cannot change order bj operation they must be in same sequence.....then feeling of replacing everytime minimum element should came
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fastio                        \
+    ios_base::sync_with_stdio(false);  \
+    cin.tie(NULL)
+
+const int maximum=INT_MAX;
+const int minimum=INT_MIN;
+typedef long long ll;
+typedef unsigned long long int ull;
+const int MOD=1e9+7;
+
+
+
+void solve(){
+    int n,m;
+    cin>>n>>m;
+    int num[n],b[m];
+    for(int i=0;i<n;i++)cin>>num[i];
+    for(int j=0;j<m;j++)cin>>b[j];
+    
+    priority_queue <int, vector<int>, greater<int> > pq; 
+    for(int i=0;i<n;i++)pq.push(num[i]);
+    int i=0;
+    while(i<m){
+        pq.pop();
+        pq.push(b[i]);
+        i++;
+    }
+    
+    ll ans=0;
+    while(!pq.empty()){
+        int a=pq.top();
+        ans+=a;
+        pq.pop();
+    }
+    cout<<ans<<"\n";
+   
+        return;
+}
+
+int main() {
+    fastio;
+    ll t;
+    cin>>t;
+    while(t--){
+         solve();
+    }
+	return 0;
+ }
